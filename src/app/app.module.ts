@@ -6,11 +6,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula"
+import { HomePage } from '../pages/home/home';
+
 
 
 @NgModule({
   declarations: [
     MyApp,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -20,12 +23,13 @@ import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula"
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     DragulaService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -16,9 +16,9 @@ export class HomePage {
   chooseCupTwo: Boolean = false;
   chooseCupThree: Boolean = false;
   chooseBasket: Boolean = false;
+  btSave: Boolean = false;
 
   q1 = [];
-  q2 = [];
   resultBag = [];
   products = [
     {
@@ -74,34 +74,127 @@ export class HomePage {
       'text': '',
       'sales': 0,
       'vlr_sales': 0
+    },
+    {
+      'product_id': 4,
+      'datecreate': 0,
+      'dateupdate': '0000-00-00 00:00:00',
+      'status': 0,
+      'business_id': 1,
+      'cat_id': 1,
+      'product_name': 'Paçoca',
+      'product_image': 'assets/imgs/pacoca.png',
+      'espec': '100 gr',
+      'unit_qtd': 1,
+      'prod_or_text': 1,
+      'vlr': 1.50,
+      'qtd': 1,
+      'text': '',
+      'sales': 0,
+      'vlr_sales': 0
+    }
+    ,
+    {
+      'product_id': 4,
+      'datecreate': 0,
+      'dateupdate': '0000-00-00 00:00:00',
+      'status': 0,
+      'business_id': 1,
+      'cat_id': 1,
+      'product_name': 'Paçoca',
+      'product_image': 'assets/imgs/pacoca.png',
+      'espec': '100 gr',
+      'unit_qtd': 1,
+      'prod_or_text': 1,
+      'vlr': 1.50,
+      'qtd': 1,
+      'text': '',
+      'sales': 0,
+      'vlr_sales': 0
+    }
+    ,
+    {
+      'product_id': 4,
+      'datecreate': 0,
+      'dateupdate': '0000-00-00 00:00:00',
+      'status': 0,
+      'business_id': 1,
+      'cat_id': 1,
+      'product_name': 'Paçoca',
+      'product_image': 'assets/imgs/pacoca.png',
+      'espec': '100 gr',
+      'unit_qtd': 1,
+      'prod_or_text': 1,
+      'vlr': 1.50,
+      'qtd': 1,
+      'text': '',
+      'sales': 0,
+      'vlr_sales': 0
+    }
+    ,
+    {
+      'product_id': 4,
+      'datecreate': 0,
+      'dateupdate': '0000-00-00 00:00:00',
+      'status': 0,
+      'business_id': 1,
+      'cat_id': 1,
+      'product_name': 'Paçoca',
+      'product_image': 'assets/imgs/pacoca.png',
+      'espec': '100 gr',
+      'unit_qtd': 1,
+      'prod_or_text': 1,
+      'vlr': 1.50,
+      'qtd': 1,
+      'text': '',
+      'sales': 0,
+      'vlr_sales': 0
+    }
+    ,
+    {
+      'product_id': 4,
+      'datecreate': 0,
+      'dateupdate': '0000-00-00 00:00:00',
+      'status': 0,
+      'business_id': 1,
+      'cat_id': 1,
+      'product_name': 'Paçoca',
+      'product_image': 'assets/imgs/pacoca.png',
+      'espec': '100 gr',
+      'unit_qtd': 1,
+      'prod_or_text': 1,
+      'vlr': 1.50,
+      'qtd': 1,
+      'text': '',
+      'sales': 0,
+      'vlr_sales': 0
     }
   ];
   constructor(
     navCtrl: NavController,
     private dragulaService: DragulaService
   ) {
-    // for (var i = 0; i < 5; i++) {
-    //   this.q1.push("1...." + i )
-    // }
+    /*
+  #############################
+  LÓGICA DO DRAG AND DROP
+  #############################
+  */
     let l = this.products.length;
     for (var i = 0; i < l; i++) {
       this.q1.push(this.products);
     }
-
-
     dragulaService.drop.subscribe((value) => {
-      console.log(value)
+      console.log(value);
+      value !== '' ? this.btSave = true : this.btSave = false;
     });
-
     // this is to prevent 'bag already exists error'
     // https://github.com/valor-software/ng2-dragula/issues/442
     const bag: any = this.dragulaService.find('bag');
-    if (bag !== undefined) this.dragulaService.destroy('bag');
-
+    if (bag !== undefined)
+      this.dragulaService.destroy('bag');
     dragulaService.setOptions('bag', {
       resetOnSpill: true
     });
-
   }
   /*
   #############################
@@ -141,5 +234,12 @@ export class HomePage {
     this.chooseCupTwo = false;
     this.chooseBasket = true;
   }
-
+  /*
+  #############################
+  BOTÃO SALVA PEDIDO
+  #############################
+  */
+  saveOrder() {
+    console.log(this.resultBag);
+  }
 }

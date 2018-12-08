@@ -6,7 +6,7 @@
   </div>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="animated faster slideInDown">
   <div class="wrap-choice-init">
     <span class="fs2 purple central-h bold">Escola o tipo de Açaí</span>
     <div class="mt10">
@@ -43,16 +43,23 @@
   </div>
   <div [ngClass]="{'animated faster bounceInUp' : chooseBasket}" *ngIf="chooseBasket === true">
     <span class="header-basket mt20">Selecione um item, arraste...</span>
-    <div class="basket-one" [dragula]='"bag"' [dragulaModel]="products">
-      <span class="img-ico" *ngFor="let item of products">
-        <img class="animated slow infinite swing" src="{{item.product_image}}" alt="">
-      </span>
+    <div class="wrap-scroll">
+      <div class="basket-one" [dragula]='"bag"' [dragulaModel]="products">
+        <span class="img-ico" *ngFor="let item of products">
+          <img class="animated slow infinite swing" src="{{item.product_image}}" alt="">
+        </span>
+      </div>
     </div>
     <span class="header-basket">...e solte aqui</span>
-    <div class="basket-two" [dragula]='"bag"' [dragulaModel]="resultBag">
-      <span class="img-ico" *ngFor="let item of resultBag">
-        <img class="animated rubberBand" src="{{item.product_image}}" alt="">
-      </span>
+    <div class="wrap-scroll-two">
+      <div class="basket-two" [dragula]='"bag"' [dragulaModel]="resultBag">
+        <span class="img-ico-two" *ngFor="let item of resultBag">
+          <img class="animated rubberBand" src="{{item.product_image}}" alt="">
+        </span>
+      </div>
     </div>
+  </div>
+  <div class="central-h mt10" [ngClass]="{'animated faster slideInUp' : btSave}" *ngIf="btSave === true">
+  <button class="bt-default" [disabled]="!btSave" (click)="saveOrder()">SALVAR PEDIDO</button>
   </div>
 </ion-content>
