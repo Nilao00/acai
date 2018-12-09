@@ -44,8 +44,8 @@
   <div [ngClass]="{'animated faster bounceInUp' : chooseBasket}" *ngIf="chooseBasket === true">
     <span class="header-basket mt20">Selecione um item, arraste...</span>
     <div class="wrap-scroll">
-      <div class="basket-one" [dragula]='"bag"' [dragulaModel]="products">
-        <span class="img-ico" *ngFor="let item of products">
+      <div class="basket-one" [dragula]='"bag"' [dragulaModel]="list">
+        <span class="img-ico" *ngFor="let item of list">
           <img class="animated slow infinite swing" src="{{item.product_image}}" alt="">
         </span>
       </div>

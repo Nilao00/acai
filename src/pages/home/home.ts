@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { DragulaService } from "ng2-dragula/ng2-dragula"
+import { ServiceProvider } from '../../providers/service/service';
 
 
 @IonicPage()
@@ -17,7 +18,7 @@ export class HomePage {
   chooseCupThree: Boolean = false;
   chooseBasket: Boolean = false;
   btSave: Boolean = false;
-
+  list: any;
   q1 = [];
   resultBag = [];
   products = [
@@ -172,28 +173,36 @@ export class HomePage {
   ];
   constructor(
     navCtrl: NavController,
-    private dragulaService: DragulaService
+    private dragulaService: DragulaService,
+    public service: ServiceProvider
   ) {
     /*
   #############################
   LÓGICA DO DRAG AND DROP
   #############################
   */
-    let l = this.products.length;
-    for (var i = 0; i < l; i++) {
-      this.q1.push(this.products);
-    }
-    dragulaService.drop.subscribe((value) => {
-      console.log(value);
-      value !== '' ? this.btSave = true : this.btSave = false;
-    });
-    // this is to prevent 'bag already exists error'
-    // https://github.com/valor-software/ng2-dragula/issues/442
-    const bag: any = this.dragulaService.find('bag');
-    if (bag !== undefined)
+    // this.getLsitPro();
+    this.service.getProdByCatAndBusns(1, 1).subscribe(res => {
+      console.log(this.list = res.message);
+      // let b = this.list.length;
+      // console.log(b);
+      console.log(this.list);
+      let l = this.list.length;
+      for (var i = 0; i < l; i++) {
+        this.q1.push(this.list);
+      }
+      dragulaService.drop.subscribe((value) => {
+        console.log(value);
+        value !== '' ? this.btSave = true : this.btSave = false;
+      });
+      // this is to prevent 'bag already exists error'
+      // https://github.com/valor-software/ng2-dragula/issues/442
+      const bag: any = this.dragulaService.find('bag');
+      if (bag !== undefined)
       this.dragulaService.destroy('bag');
-    dragulaService.setOptions('bag', {
-      resetOnSpill: true
+      dragulaService.setOptions('bag', {
+        resetOnSpill: true
+      });
     });
   }
   /*
@@ -242,4 +251,15 @@ export class HomePage {
   saveOrder() {
     console.log(this.resultBag);
   }
+  /*
+  #############################
+  CHAMA PRODUTOS
+  #############################
+  */
+  // getLsitPro() {
+  //   this.service.getProdByCatAndBusns(1, 1).subscribe(res => {
+  //     console.log(this.products = res.message);
+  //   });
+  // }
+  
 }
