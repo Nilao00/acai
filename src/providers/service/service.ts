@@ -49,7 +49,7 @@ export class ServiceProvider {
     let options = new RequestOptions({ headers: headers });
     // let token = localStorage.getItem('token');
     // headers.append('Authorization', token);
-    return this.http.get('http://localhost/server/api/products/' + $id + '/' + $id2, options)
+    return this.http.get('http://shop-app.com.br/host/api/products/' + $id + '/' + $id2, options)
       .map(res => res.json());
   }
   registerOrder(values: string): Observable<any> {

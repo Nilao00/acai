@@ -1,5 +1,7 @@
 {
   "name": "dragTest",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

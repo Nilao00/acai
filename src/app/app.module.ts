@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { SearchPipe } from '../pipes/search/search';
 
 import { MyApp } from './app.component';
 import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula"
@@ -15,7 +16,8 @@ import { ServiceProvider } from '../providers/service/service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
